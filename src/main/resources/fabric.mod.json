@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "keybinds",
+  "version": "${version}",
+
+  "name": "Keybinds",
+  "description": "A mod made by bamajoe411 and DolmondBoi. Keybinfds for Home and Spawn teleports.",
+  "authors": [
+    "bamajoe411",
+    "DolmondBoi"
+  ],
+  "contact": {
+    "homepage": "https://www.bamajoe411.com/Keybinds",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/keybinds/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.bamajoe411.keybinds.Keybinds"
+    ]
+  },
+  "mixins": [
+
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.15.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
