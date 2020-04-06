@@ -7,8 +7,9 @@ import net.fabricmc.fabric.api.event.client.ClientTickCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Keybinds implements ModInitializer{
     private static FabricKeyBinding keyBinding;
@@ -34,18 +35,25 @@ public class Keybinds implements ModInitializer{
         ).build();
         KeyBindingRegistry.INSTANCE.register(spawn);
 
+        AtomicBoolean lock = new AtomicBoolean(false);
         ClientTickCallback.EVENT.register(e ->
         {
-            if(spawn.isPressed()) {
+            if(spawn.isPressed() && !lock.get()) {
                 MinecraftClient client = MinecraftClient.getInstance();
-                client.player.sendChatMessage("/trigger cmd set 1");
+                client.player.sendChatMessage("trigger cmd set 1");
                 // System.out.println("Spawn Key Was Pressed");
+                lock.set(true);
             }
 
-            if(home.isPressed()) {
+            if(home.isPressed() && !lock.get()) {
                 MinecraftClient client = MinecraftClient.getInstance();
                 client.player.sendChatMessage("/trigger cmd set 3");
                 // System.out.println("Home Key Was Pressed");
+                lock.set(true);
+            }
+            if (!spawn.isPressed() && !home.isPressed()) { // Makes it so the command only executes once
+                lock.set(false);
+
             }
         });
 
