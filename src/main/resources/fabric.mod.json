@@ -4,13 +4,13 @@
   "version": "${version}",
 
   "name": "Keybinds",
-  "description": "A mod made by bamajoe411 and DolmondBoi. Keybinfds for Home and Spawn teleports.",
+  "description": "A mod made by bamajoe411 and DolmondBoi. Keybinds for Home and Spawn teleports.",
   "authors": [
     "bamajoe411",
     "DolmondBoi"
   ],
   "contact": {
-    "homepage": "https://www.bamajoe411.com/Keybinds",
+    "homepage": "https://github.com/BamaJoe411/keybinds/wiki",
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
 
