@@ -21,7 +21,7 @@ public class Keybinds implements ModInitializer{
         FabricKeyBinding home = FabricKeyBinding.Builder.create(
                 new Identifier("keybinds", "home"),
                 InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_EQUAL,
+                GLFW.GLFW_KEY_KP_7,
                 "Vanilla High"
         ).build();
         KeyBindingRegistry.INSTANCE.register(home);
@@ -30,7 +30,7 @@ public class Keybinds implements ModInitializer{
         FabricKeyBinding spawn = FabricKeyBinding.Builder.create(
                 new Identifier("keybinds", "spawn"),
                 InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_MINUS,
+                GLFW.GLFW_KEY_KP_9,
                 "Vanilla High"
         ).build();
         KeyBindingRegistry.INSTANCE.register(spawn);
@@ -40,7 +40,7 @@ public class Keybinds implements ModInitializer{
         {
             if(spawn.isPressed() && !lock.get()) {
                 MinecraftClient client = MinecraftClient.getInstance();
-                client.player.sendChatMessage("trigger cmd set 1");
+                client.player.sendChatMessage("/trigger cmd set 1");
                 // System.out.println("Spawn Key Was Pressed");
                 lock.set(true);
             }
