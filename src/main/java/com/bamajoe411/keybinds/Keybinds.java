@@ -36,16 +36,16 @@ public class Keybinds implements ModInitializer{
 
         ClientTickCallback.EVENT.register(e ->
         {
-            if(home.isPressed()) {
-                World world = MinecraftClient.getInstance().world;
-
-                //ClientPlayerEntity player = new ClientPlayerEntity(MinecraftClient.getInstance(), world);
-
-                System.out.println("Home Key Was Pressed");
+            if(spawn.isPressed()) {
+                MinecraftClient client = MinecraftClient.getInstance();
+                client.player.sendChatMessage("/trigger cmd set 1");
+                // System.out.println("Spawn Key Was Pressed");
             }
 
-            if(spawn.isPressed()) {
-                System.out.println("Spawn Key Was Pressed");
+            if(home.isPressed()) {
+                MinecraftClient client = MinecraftClient.getInstance();
+                client.player.sendChatMessage("/trigger cmd set 3");
+                // System.out.println("Home Key Was Pressed");
             }
         });
 
