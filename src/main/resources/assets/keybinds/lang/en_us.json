@@ -1,4 +1,4 @@
 {
-    "key.keybinds.home" : "Home",
-    "key.keybinds.spawn" : "Spawn"
+    "key.keybinds.home" : "Home Teleport",
+    "key.keybinds.spawn" : "Spawn Teleport"
 }
