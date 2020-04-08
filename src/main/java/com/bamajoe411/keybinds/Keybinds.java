@@ -1,5 +1,7 @@
 package com.bamajoe411.keybinds;
 
+import com.bamajoe411.keybinds.gui.gui;
+import com.bamajoe411.keybinds.gui.screen;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.FabricKeyBinding;
 import net.fabricmc.fabric.api.client.keybinding.KeyBindingRegistry;
@@ -17,41 +19,23 @@ public class Keybinds implements ModInitializer{
     @Override
     public void onInitialize() {
         KeyBindingRegistry.INSTANCE.addCategory("Vanilla High");
-        // Home
-        FabricKeyBinding home = FabricKeyBinding.Builder.create(
-                new Identifier("keybinds", "home"),
+        // gui_key
+        FabricKeyBinding gui_key = FabricKeyBinding.Builder.create(
+                new Identifier("keybinds", "menu"),
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_KP_7,
                 "Vanilla High"
         ).build();
-        KeyBindingRegistry.INSTANCE.register(home);
-
-        // Spawn
-        FabricKeyBinding spawn = FabricKeyBinding.Builder.create(
-                new Identifier("keybinds", "spawn"),
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_KP_9,
-                "Vanilla High"
-        ).build();
-        KeyBindingRegistry.INSTANCE.register(spawn);
+        KeyBindingRegistry.INSTANCE.register(gui_key);
 
         AtomicBoolean lock = new AtomicBoolean(false);
         ClientTickCallback.EVENT.register(e ->
         {
-            if(spawn.isPressed() && !lock.get()) {
-                MinecraftClient client = MinecraftClient.getInstance();
-                client.player.sendChatMessage("/trigger cmd set 1");
-                // System.out.println("Spawn Key Was Pressed");
+            if(gui_key.isPressed() && !lock.get()) {
+                MinecraftClient.getInstance().openScreen(new screen(new gui()));
                 lock.set(true);
             }
-
-            if(home.isPressed() && !lock.get()) {
-                MinecraftClient client = MinecraftClient.getInstance();
-                client.player.sendChatMessage("/trigger cmd set 3");
-                // System.out.println("Home Key Was Pressed");
-                lock.set(true);
-            }
-            if (!spawn.isPressed() && !home.isPressed()) { // Makes it so the command only executes once
+            if (!gui_key.isPressed()) { // Makes it so the command only executes once
                 lock.set(false);
 
             }
