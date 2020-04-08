@@ -1,8 +1,9 @@
 # Keybinds Mod
 by bamajoe411 and DolmondBoi
 
-### This mod is for use on Vanilla High.
+### Welcome to the unofficial Vanilla High Keybinds mod!
+
+The purpose of this mod is to allow players to do the home and spawn teleports without having to use the guide book.  
 
 #### Todo:
-- Finish developing the mod
-- Make a better README
+- Add a way to display how many spawn teleports are left for the day
